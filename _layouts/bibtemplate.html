@@ -1,0 +1,37 @@
+---
+---
+
+{{reference | replace_first: 'Valiveti, R. S.', '<b>Valiveti, R. S.</b>' | replace_first: 'Valiveti, R.', '<b>Valiveti, R.</b>' | replace_first: 'Valiveti RS', '<b>Valiveti RS</b>' | replace_first: 'Valiveti R', '<b>Valiveti R</b>'}}
+<br/>
+
+{% if entry.abstract %}
+<button class="btn btnId btnPub--abstract" id="b_{{key}}-abstract" style="outline:none;">Abstract</button>
+{% endif %}
+
+<button class="btn btnId btnPub--BibTex" id="b_{{key}}-bibtex" style="outline:none;">BibTeX</button>
+
+{% if link %}
+  <a href="{{link}}"><button class="btn btnId btnPub--download" style="outline:none; position:relative;white-space: normal;">PDF</button></a>
+{% endif %}
+  
+{% if links['sup.pdf'] %}
+  <a href="{{links['sup.pdf']}}"><button class="btn btnId btnPub--supplement" style="outline:none; position:relative;white-space: normal;">Supplement</button>
+  </a>
+{% endif %}
+
+{% if entry.doi %}
+{% if entry.type == 'unpublished' %}
+<a href="{{ entry.doi | prepend: 'https://arxiv.org/abs/' }}" target="_blank"><button class="btn btnId btnPub--download">ARXIV</button></a>
+{% else %}
+<a href="{{ entry.doi | prepend: 'http://doi.org/' }}" target="_blank"><button class="btn btnId btnPub--download">DOI</button></a>
+{% endif %}
+{% endif %}
+
+<div class="dropDownAbstract" id="{{entry.key}}-abstract">
+{{entry.abstract}}
+</div>
+
+<div class="dropDownBibtex" id="{{entry.key}}-bibtex">
+<pre>{{entry.bibtex}}</pre>
+</div>
+  

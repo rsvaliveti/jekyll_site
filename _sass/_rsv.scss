@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Radha Valiveti's style customizations 
+   ========================================================================== */
+   
+$abstract-color                : #009628 !default;  
+$BibTex-color                  : #b201a6 !default;  
+$download-color                : #b51b00 !default;  
+$supplement-color              : #abb500 !default;   
+
+html {
+  font-family: "Calibri", san-serif;
+  font-size: 12px; // change to whatever
+
+  @include breakpoint($medium) {
+    font-size: 14px; // change to whatever
+  }
+
+  @include breakpoint($large) {
+    font-size: 16px; // change to whatever
+  }
+
+  @include breakpoint($x-large) {
+    font-size: 18px; // change to whatever
+  }
+}
+
+.author__avatar img {
+    max-width: 250px !important;
+}
+   
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}   
+   
+.btnId{
+	display: inline-block;
+	background-color: lightgray;
+}
+
+@mixin btnPub($btnPub-color) {
+	border-style: solid;
+	border-width: 3px;
+	border-color: $btnPub-color;
+}
+
+.btnPub--abstract{
+	@include btnPub($abstract-color);
+}
+
+.btnPub--BibTex{
+	@include btnPub($BibTex-color);
+}
+ 
+.btnPub--download{
+	@include btnPub($download-color);
+}
+ 
+.btnPub--supplement{
+	@include btnPub($supplement-color);
+}
+
+.dropDownAbstract{
+	font-size: $type-size-8;
+	display: none; 
+	position: relative;
+	border-left: 3px solid $primary-color; 
+	padding-left: 3px
+}
+   
+.dropDownBibtex{
+	font-size: $type-size-8;
+	display:none; 
+	position:relative;
+}
+
+.katex { font-size: 1em !important; }
