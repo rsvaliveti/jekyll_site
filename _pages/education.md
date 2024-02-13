@@ -12,7 +12,7 @@ author_profile: true
 {% for study in site.data.cv.education %}
 <li>
     <strong>{{ study.degree }}</strong> ({{ study.area }}). 
-    {{ study.school }}; {{ study.location }} ({{ study.endDate }})
+    {{ study.school }}; {{ study.location }} ({{ study.endDate | date: "%b %Y" }})
 </li>
 {% endfor %}
 </ul>
@@ -21,7 +21,7 @@ author_profile: true
 <ul>
 {% for award in site.data.cv.awards %}
 <li>
-    {{ award.title }} (Awarded by {{ award.awarder }}) - ({{ award.date }}) 
+    {{ award.title }} (Awarded by {{ award.awarder }}) - ({{ award.date | date: "%b %Y" }}) 
 </li>
 {% endfor %}
 </ul>
