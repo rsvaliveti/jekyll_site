@@ -21,7 +21,9 @@ author_profile: true
 <ul>
 {% for award in site.data.cv.awards %}
 <li>
-    {{ award.title }} (Awarded by {{ award.awarder }}) - ({{ award.date | date: "%b %Y" }}) 
+    {{ award.title }} (Awarded by {{ award.awarder }}) - 
+    ({{ award.startDate | date: "%b %Y" }} 
+     {% if award.endDate %} {{ - {{ award.endDate | date: "%b %Y" }} {% endif %}) 
 </li>
 {% endfor %}
 </ul>
