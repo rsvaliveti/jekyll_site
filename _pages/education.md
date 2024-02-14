@@ -23,7 +23,8 @@ author_profile: true
 <li>
     {{ award.title }} (Awarded by {{ award.awarder }}) - 
     ({{ award.startDate | date: "%b %Y" }} 
-     {% if award.endDate %} {{ - {{ award.endDate | date: "%b %Y" }} {% endif %}) 
+     {% if award.endDate %}-{{ award.endDate | date: "%b %Y" }}{% endif %}).
+    {{ award.summary }}
 </li>
 {% endfor %}
 </ul>
