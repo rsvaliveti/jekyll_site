@@ -1,0 +1,41 @@
+name: Jekyll site CI (new)
+
+on:
+  workflow_dispatch:
+    branches: [ master ]
+
+jobs:
+  build:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+      
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1.171.0
+      with:
+        ruby-version: '3.2.2' # Not needed with a .ruby-version file
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        cache-version: 0 # Increment this number if you need to re-download cached gems
+
+    - name: Setup Pages
+      id: pages
+      uses: actions/configure-pages@v4
+        
+    - name: Build with Jekyll
+      # Outputs to the './_site' directory by default
+      run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+      env:
+        JEKYLL_ENV: production
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@v4.5.0
+      with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: _site # The folder the action should deploy.
+          target-folder: . # the root of the repo
+          single-commit: true # only save the last commit on the deploy branch
